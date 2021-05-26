@@ -1,0 +1,116 @@
+<html>
+<head>
+  <link rel="icon" href="assets/gfhead.png" type="image/icon type">
+  <title>Minesweeper</title>
+  <meta charset="UTF-8">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+  <script language="javascript" src="libraries/p5.dom.js"></script>
+  <script language="javascript" src="libraries/p5.sound.js"></script>
+  <script language="javascript" type="text/javascript" src="leaderboard.js"></script>
+  <script language="javascript" type="text/javascript" src="sketch.js"></script>
+  <script language="javascript" type="text/javascript" src="tile.js"></script>
+  <script language="javascript" type="text/javascript" src="counter.js"></script>
+  <script language="javascript" type="text/javascript" src="board.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script-->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="bckg"></div>
+    <div class="container" style="max-width: none !important; padding-top:5vh;">
+
+      <div class="row justify-content-left ">
+
+        <div class="col-lg-3 col-md-12" id="button-container">
+          <div class="button">
+            <a href="#canvas-container">Easy</a>
+          </div>
+          <div class="button">
+            <a href="#defaultCanvas0">Medium</a>
+          </div>
+          <div class="button">
+            <a href="#defaultCanvas0">Hard</a>
+          </div>
+          <div class="button">
+            <a href="#defaultCanvas0">Extreme</a>
+          </div>
+          <div class="button">
+            <a href="#defaultCanvas0">Insane</a>
+          </div>
+          <div style="text-align: center;">
+            <div class="button mute" id="sfx">
+              <a>🔕</a> <!--  🔔 -->
+            </div>
+            <div class="button mute" id="music">
+              <a>🔇</a> <!-- 🔊 -->
+            </div>
+          </div>
+          
+        </div>
+        <div class="col-lg-6 col-md-12" id="canvas-container" style="text-align: center; min-width: 600px !important;" ></div>
+        <div class="col-lg-3" id="leaderboard-container">
+
+          <div class="pane container" style="margin-bottom: 20px;">
+            <div class="col-12" style="font-size:30px; cursor: pointer;" onclick="showControls()" onmouseover="peekControls()" onmouseout="hideControls()" >Controls</div>
+            <div class="col-12 separator"></div>
+            <div class="row" id="controls" style="height:0px;"> 
+                <div class="col-12">
+                  <ul>
+                    <li> <b>Left click</b> </br> an empty square to reveal it</li>
+                    <li> <b>Right click</b> </br>an empty square to flag it</li>
+                    <li> <b>Middle click</b> </br>a revealed square to reveal its adjacent tiles </li>
+                    <li> <b>Click Garfield</b> </br>to start a new game</li>
+                  </ul>
+                </div>
+                <div class="col-12">
+                  <div class="col-12" style="font-size:30px;">Objective</div>
+                  <div class="col-12 separator"></div>
+                  <ul>
+                    <li> <b>Find all the mines</b> </br> by flagging them</li>
+                    <li> <b>Reveal</b> </br> every other square</li>
+                    <li> <b>Do it fast</b> </br> to make it on the leaderboard!</li>
+                    <li> <b>Have fun!</b> </br></li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+          <div class="pane container">
+            <div class="row">
+              <div class="col-12" id="leaderboard-submit">
+                <div class="col-12" style="font-size:30px;">You won!</div>
+              <div class="col-12">Submit your score?</div>
+              <div class="col-12 separator"></div>
+                <div action="" style="margin-top:10px;">
+                  <input type="text" id="name" placeholder="Your name">
+                  <button style="background-color: #89CFF0; margin-top: 5px;" onclick="submitRecord()">Submit</button>
+                </div>
+              </div>
+
+              <div class="col-12" style="font-size:30px;">Leaderboard</div>
+              <div class="col-12" ><span id="leaderboard-difficulty">Medium</span></div>
+              <div class="col-12 separator"></div>
+              <div class="col-2" style="color:#89CFF0;">#</div><div class="col-4" style="color:#89CFF0;">Name</div><div class="col-6" style="color:#89CFF0;">Time</div>
+            </div>
+              <div class="row" id="records">
+                
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+
+</body>
+<!--script>
+  document.getElementById("canvas-container").addEventListener('contextmenu', event => event.preventDefault());
+</script-->
+</html>
