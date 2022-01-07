@@ -97,7 +97,7 @@ function addNewRecord(userName, difficulty, newTime){
     }
     };
 
-    req.open("PUT", "https://api.jsonbin.io/b/61d81d8b2675917a628bcd37/latest", true);
+    req.open("PUT", "https://api.jsonbin.io/b/61d81d8b2675917a628bcd37", true);
     req.setRequestHeader("Content-Type", "application/json");
     req.send(JSON.stringify(leaderboardData));
 }
