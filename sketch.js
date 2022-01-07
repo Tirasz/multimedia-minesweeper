@@ -55,7 +55,6 @@ function preload(){
     sounds["flag"] = loadSound("assets/flag.mp3")
     sounds["deflag"] = loadSound("assets/deflag.mp3")
     sounds["new_tile"] = loadSound("assets/new_tile.mp3")
-    $.getJSON("assets/leaderboard.json", (data) => {leaderboardData = data});
     //song = loadSound("assets/main_theme.mp3");
     
 }
@@ -66,7 +65,7 @@ function setup() {
     sprites = loadImage("assets/garfield_sprites.png");
     canvas.parent('canvas-container')
     board = new Board(600,600,2);
-    displayLeaderboard( $( "#leaderboard-difficulty" ).text());
+    //displayLeaderboard( $( "#leaderboard-difficulty" ).text());
     //disables the default broswer right-click event on the canvas.
     document.getElementById("defaultCanvas0").addEventListener('contextmenu', event => event.preventDefault());
     //disables middleclick scroll

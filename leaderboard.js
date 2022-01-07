@@ -3,7 +3,11 @@
 //Array of users, every user has a difficulty-time pair for each difficulty they managed to win on
 var leaderboardData; 
 var maxRows = 10;
-
+$.getJSON("https://api.jsonbin.io/b/61d81d8b2675917a628bcd37/latest", (data) => {
+    leaderboardData = data;
+    console.log(data)
+    displayLeaderboard( $( "#leaderboard-difficulty" ).text());
+});
 function secondsToString(seconds){
     let minutes = Math.floor(seconds / 60);
     let s = seconds-(minutes*60);
@@ -13,7 +17,6 @@ function secondsToString(seconds){
 
 
 function displayLeaderboard(difficulty){
-    $.getJSON("assets/leaderboard.json", (data) => {leaderboardData = data});
     //Displays the leaderboard of the given difficulty
 
     //Clear current records from the page.
@@ -86,5 +89,15 @@ function addNewRecord(userName, difficulty, newTime){
     }
 
     //console.log(`Saved ${userName}' score: ${newTime}`)
-    $.post( "updateLeaderboard.php", JSON.stringify(leaderboardData))
+    let req = new XMLHttpRequest();
+
+    req.onreadystatechange = () => {
+    if (req.readyState == XMLHttpRequest.DONE) {
+        console.log(req.responseText);
+    }
+    };
+
+    req.open("PUT", "https://api.jsonbin.io/b/61d81d8b2675917a628bcd37/latest", true);
+    req.setRequestHeader("Content-Type", "application/json");
+    req.send(JSON.stringify(leaderboardData));
 }
